@@ -27,8 +27,10 @@
         /* Header */
         header {
             background: white;
-            padding: 20px 0;
+            padding: 15px 0;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
         }
 
         nav {
@@ -38,7 +40,7 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
             color: #333;
             text-decoration: none;
@@ -49,6 +51,7 @@
             gap: 40px;
             list-style: none;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
@@ -77,6 +80,79 @@
             color: white !important;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 20px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: #007bff;
+        }
+
+        .mobile-menu .sign-in-btn {
+            background: #333;
+            color: white !important;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            margin-top: 30px;
+        }
+
         /* Hero Section */
         .hero {
             padding: 120px 0 100px;
@@ -85,7 +161,7 @@
         }
 
         .hero h1 {
-            font-size: 72px;
+            font-size: clamp(42px, 8vw, 72px);
             font-weight: 700;
             color: #333;
             margin-bottom: 20px;
@@ -94,13 +170,14 @@
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: clamp(16px, 3vw, 20px);
             color: #666;
             margin-bottom: 50px;
             font-style: italic;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 20px;
         }
 
         .hero-buttons {
@@ -108,6 +185,7 @@
             gap: 30px;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .get-started-btn {
@@ -155,16 +233,16 @@
 
         /* Features Section */
         .features {
-            padding: 100px 0;
+            padding: 80px 0;
             background: white;
         }
 
         .features h2 {
-            font-size: 48px;
+            font-size: clamp(36px, 6vw, 48px);
             font-weight: 700;
             text-align: center;
             color: #333;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             text-decoration: underline;
             text-decoration-thickness: 4px;
             text-underline-offset: 10px;
@@ -172,15 +250,15 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .feature-card {
             background: #e9ecef;
-            padding: 60px 40px;
+            padding: 50px 30px;
             border-radius: 20px;
             text-align: center;
             transition: all 0.3s ease;
@@ -198,7 +276,7 @@
         }
 
         .feature-card h3 {
-            font-size: 24px;
+            font-size: clamp(20px, 4vw, 24px);
             font-weight: 700;
             color: #333;
             margin-bottom: 20px;
@@ -212,16 +290,16 @@
 
         /* Why Choose Us Section */
         .why-choose {
-            padding: 100px 0;
+            padding: 80px 0;
             background: #f8f9fa;
         }
 
         .why-choose h2 {
-            font-size: 48px;
+            font-size: clamp(36px, 6vw, 48px);
             font-weight: 700;
             text-align: center;
             color: #333;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             text-decoration: underline;
             text-decoration-thickness: 4px;
             text-underline-offset: 10px;
@@ -229,21 +307,21 @@
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .benefit-card {
             background: #d4a5a5;
-            padding: 50px 40px;
+            padding: 40px 30px;
             border-radius: 20px;
             text-align: center;
         }
 
         .benefit-card h3 {
-            font-size: 22px;
+            font-size: clamp(18px, 4vw, 22px);
             font-weight: 700;
             color: #333;
             margin-bottom: 10px;
@@ -257,16 +335,16 @@
 
         /* Team Section */
         .team {
-            padding: 100px 0;
+            padding: 80px 0;
             background: white;
             text-align: center;
         }
 
         .team h2 {
-            font-size: 48px;
+            font-size: clamp(36px, 6vw, 48px);
             font-weight: 700;
             color: #333;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             text-decoration: underline;
             text-decoration-thickness: 4px;
             text-underline-offset: 10px;
@@ -275,10 +353,11 @@
         .team-content {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .team-intro {
-            font-size: 18px;
+            font-size: clamp(16px, 3vw, 18px);
             color: #333;
             margin-bottom: 20px;
             line-height: 1.6;
@@ -298,16 +377,16 @@
 
         /* Mission Section */
         .mission {
-            padding: 100px 0;
+            padding: 80px 0;
             background: #f8f9fa;
             text-align: center;
         }
 
         .mission h2 {
-            font-size: 48px;
+            font-size: clamp(36px, 6vw, 48px);
             font-weight: 700;
             color: #333;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             text-decoration: underline;
             text-decoration-thickness: 4px;
             text-underline-offset: 10px;
@@ -316,37 +395,39 @@
         .mission-content {
             max-width: 800px;
             margin: 0 auto;
-            font-size: 18px;
+            font-size: clamp(16px, 3vw, 18px);
             color: #333;
             line-height: 1.7;
+            padding: 0 20px;
         }
 
         /* Contact Section */
         .contact {
-            padding: 100px 0;
+            padding: 80px 0;
             background: #e9ecef;
             text-align: center;
         }
 
         .contact h2 {
-            font-size: 48px;
+            font-size: clamp(36px, 6vw, 48px);
             font-weight: 700;
             color: #333;
             margin-bottom: 30px;
         }
 
         .contact-intro {
-            font-size: 18px;
+            font-size: clamp(16px, 3vw, 18px);
             color: #333;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .contact-description {
             max-width: 700px;
-            margin: 0 auto 50px;
+            margin: 0 auto 40px;
             font-size: 16px;
             color: #666;
             line-height: 1.6;
+            padding: 0 20px;
         }
 
         .talk-to-us-btn {
@@ -371,7 +452,7 @@
             background: #333;
             color: white;
             text-align: center;
-            padding: 40px 0;
+            padding: 40px 20px;
         }
 
         .footer-text {
@@ -379,14 +460,29 @@
             color: #ccc;
         }
 
-        /* Mobile Responsiveness */
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
-            .hero h1 {
-                font-size: 48px;
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 80px 0 60px;
             }
 
             .hero-buttons {
@@ -394,24 +490,75 @@
                 gap: 20px;
             }
 
-            .features-grid,
+            .features, .why-choose, .team, .mission, .contact {
+                padding: 60px 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
             .benefits-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
             }
 
-            .features h2,
-            .why-choose h2,
-            .team h2,
-            .mission h2,
-            .contact h2 {
-                font-size: 36px;
+            .feature-card, .benefit-card {
+                padding: 40px 25px;
             }
 
-            .feature-card,
-            .benefit-card {
-                padding: 40px 30px;
+            .container {
+                padding: 0 20px;
             }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 24px;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .hero p {
+                margin-bottom: 40px;
+            }
+
+            .get-started-btn, .talk-to-us-btn {
+                padding: 15px 30px;
+                font-size: 15px;
+            }
+
+            .feature-card, .benefit-card {
+                padding: 35px 20px;
+            }
+
+            .feature-icon {
+                font-size: 50px;
+                margin-bottom: 20px;
+            }
+
+            .features, .why-choose, .team, .mission, .contact {
+                padding: 50px 0;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Animation styles */
+        .feature-card, .benefit-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .feature-card.animate, .benefit-card.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -426,7 +573,20 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#" class="sign-in-btn">Sign In</a></li>
                 </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#" class="sign-in-btn">Sign In</a>
         </div>
     </header>
 
@@ -525,6 +685,33 @@
     </footer>
 
     <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = hamburger.contains(event.target) || mobileMenu.contains(event.target);
+            if (!isClickInsideNav && mobileMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -539,7 +726,7 @@
             });
         });
 
-        // Add subtle scroll animations
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -548,18 +735,22 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('animate');
                 }
             });
         }, observerOptions);
 
         // Apply animation to cards
         document.querySelectorAll('.feature-card, .benefit-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease';
             observer.observe(card);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
         });
     </script>
 </body>
